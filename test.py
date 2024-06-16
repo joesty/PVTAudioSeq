@@ -77,12 +77,12 @@ def inference(model, eval_method, hdf, split_id, dataloader, device):
             f_score, prec, rec = evaluate_summary(summary, user_summary, eval_method)
             if f_score > 0.1:
                 target = target.cpu().numpy()[0]
-                patarget = patarget.cpu().numpy()[0]
+                #patarget = patarget.cpu().numpy()[0]
                 target = np.repeat(target, (len(summary) // len(target)) + 1)[:len(summary)]
-                plt.plot(target, color="y")
-                plt.plot(patarget, color="b")
-                plt.fill_between(x=np.arange(len(target)), y1=target, where=summary, color='cornflowerblue', alpha=0.2)
-                plt.show()
+                #plt.plot(target, color="y")
+                #plt.plot(patarget, color="b")
+                #plt.fill_between(x=np.arange(len(target)), y1=target, where=summary, color='cornflowerblue', alpha=0.2)
+                #plt.show()
 
             # print(f_score)
             video_fscores.append(f_score)

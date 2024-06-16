@@ -43,14 +43,14 @@ def main(model_type, epochs, lr):
     #                     "lr": lr})
 
     for dataset in datasets[:1]:
-        hdf = h5py.File("datasets/eccv16_dataset_{}_google_pool5.h5".format(dataset.lower()))
+        hdf = h5py.File("/content/drive/MyDrive/datasets/eccv16_dataset_{}_google_pool5.h5".format(dataset.lower()))
  
         split_fscores = []
         num_splits = 1
         for i in range(num_splits):
             if model_type == "PGL-SUM":
                 model = get_model(model_type)
-                model_path = f"pretrained_models/PGL-SUM/table{3}_models/{dataset}/split{i}"
+                model_path = f"/content/drive/MyDrive/reimplementation-masters/pretrained_models/PGL-SUM/table{3}_models/{dataset}/split{i}"
                 model_file = [f for f in listdir(model_path) if isfile(join(model_path, f))]
                 model.load_state_dict(torch.load(join(model_path, model_file[-1]), map_location=torch.device('cpu')))
                 print("[{}] Training on split{}: ".format(dataset, i))

@@ -19,9 +19,9 @@ class VideoData(Dataset):
         #                  'datasets/eccv16_dataset_tvsum_clip_pool5.h5']
         # self.datasets = ['datasets/eccv16_dataset_summe_clip_audio_pool5.h5', 
         #                  'datasets/eccv16_dataset_tvsum_clip_audio_pool5.h5']
-        self.datasets = ['datasets/eccv16_dataset_summe_clip_audio_pa_pool5.h5', 
-                         'datasets/eccv16_dataset_tvsum_clip_audio_pa_pool5.h5']
-        self.splits_filename = ['datasets/splits/' + self.name + '_splits.json']
+        self.datasets = ['/content/drive/MyDrive/datasets/eccv16_dataset_summe_clip_audio_pa_pool5.h5', 
+                         '/content/drive/MyDrive/datasets/eccv16_dataset_tvsum_clip_audio_pa_pool5.h5']
+        self.splits_filename = ['/content/drive/MyDrive/datasets/splits/' + self.name + '_splits.json']
         self.split_index = split_index  # it represents the current split (varies from 0 to 4)
 
         if 'summe' in self.splits_filename[0]:

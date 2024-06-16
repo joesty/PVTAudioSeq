@@ -75,6 +75,8 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
             outputs, _ = model(frame_features.to(device).squeeze(0),
                                audio_features.to(device).squeeze(0)) 
                               #  patarget.to(device).squeeze(0))
+            print(outputs.shape)
+            print(patarget.shape)
             # outputs, _ = model(frame_features.to(device).squeeze(0))
             # video_loss = criterion(outputs.cpu().squeeze(0), target.squeeze(0))
             video_loss = criterion(outputs.cpu().squeeze(0), patarget.squeeze(0))
@@ -87,10 +89,10 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
                 summary = set_summary_from_video_index(hdf, video_index, scores)
                 f1_score, prec, rec = evaluate_summary(summary, user_summary, 'max')
                 import matplotlib.pyplot as plt
-                plt.plot(target.cpu().numpy()[0])
-                plt.plot(patarget.cpu().numpy()[0])
+                #plt.plot(target.cpu().numpy()[0])
+               #plt.plot(patarget.cpu().numpy()[0])
                 # plt.plot(gt_summary.cpu().numpy()[0])
-                plt.plot(outputs.detach().cpu().numpy()) ; plt.show()
+                #plt.plot(outputs.detach().cpu().numpy()) ; plt.show()
 
                 print("VIDEO LOSS: {}".format(video_loss))
                 target_mean = target.cpu().numpy()[0].mean()
@@ -99,8 +101,8 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
                 print("F1 Score: {}".format(f1_score))
                 print("Precision: {}".format(prec))
                 print("Recall: {}".format(rec))
-        if epoch % 5 == 0:
-            f1_test = inference(model, eval_method, hdf, split, test_dataloader, device)
+        #if epoch % 5 == 0:
+        #    f1_test = inference(model, eval_method, hdf, split, test_dataloader, device)
 
             # wandb.log({
             #   'train/loss/video_{}'.format(video_index): loss.item(),
