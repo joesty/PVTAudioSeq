@@ -75,8 +75,8 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
             outputs, _ = model(frame_features.to(device).squeeze(0),
                                audio_features.to(device).squeeze(0)) 
                               #  patarget.to(device).squeeze(0))
-            print(outputs.shape)
-            print(patarget.shape)
+            #print(outputs.shape)
+            #print(patarget.shape)
             # outputs, _ = model(frame_features.to(device).squeeze(0))
             # video_loss = criterion(outputs.cpu().squeeze(0), target.squeeze(0))
             video_loss = criterion(outputs.cpu().squeeze(0), patarget.squeeze(0))

@@ -17,14 +17,14 @@ def add_video_name(dataset_path, dataset_name):
         dataset.close()
 
 def get_dataset_name(dataset_path):
-    print(dataset_path)
+    #print(dataset_path)
     dataset_name = dataset_path.split("_")[-3]
     return dataset_name
 
 def main():
     dataset_folder_path = "datasets"
     dataset_paths_list = os.listdir(dataset_folder_path)
-    print(dataset_paths_list)
+    #print(dataset_paths_list)
     for dataset_path in dataset_paths_list:
         if dataset_path.endswith(".h5"):
             dataset_name = get_dataset_name(os.path.join(dataset_folder_path, dataset_path))
