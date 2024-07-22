@@ -16,6 +16,13 @@ def generate_summary(ypred, cps, n_frames, nfps, positions, proportion=0.15, met
     - proportion: length of video summary (compared to original video length).
     - method: defines how shots are selected, ['knapsack', 'rank'].
     """
+    print(cps)
+    print(n_frames)
+    print(nfps)
+    print(positions)
+    print(cps.shape)
+    print(nfps.shape)
+    print(positions.shape)
     n_segs = cps.shape[0]
     frame_scores = np.zeros((n_frames), dtype=np.float32)
     if positions.dtype != int:

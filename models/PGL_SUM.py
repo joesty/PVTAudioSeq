@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
-from models.attention import SelfAttention
+from models.pgl_attention import SelfAttention
 
 
 class MultiAttention(nn.Module):
@@ -126,7 +126,7 @@ class PGL_SUM(nn.Module):
         y = y.view(1, -1)
 
         return y, attn_weights
-        # return y
+
 
 
 if __name__ == '__main__':

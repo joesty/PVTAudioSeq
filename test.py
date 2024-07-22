@@ -19,10 +19,12 @@ def test(dataloader, model, device, hdf, print_individual=True, print_metrics=["
         for _ in range(len(dataloader)):
             frame_features, audio_features, target, patarget, user_summary, gt_summary, video_name = next(data_iter)
             # user_summary = target.numpy()
+            
             user_summary = user_summary.numpy()[0]
             outputs, _ = model(frame_features.to(device).squeeze(0),
-                               audio_features.to(device).squeeze(0))
-                              #  patarget.to(device).squeeze(0))
+                               audio_features.to(device).squeeze(0)
+                               #patarget.to(device).squeeze(0)
+                            )
             # outputs, _ = model(frame_features.to(device).squeeze(0))
             video_index = video_name[0][6:]
             real_video_name = hdf.get('video_' + video_index + '/video_name')[...]

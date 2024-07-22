@@ -54,7 +54,7 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
     model.train()
     # criterion = RMSLELoss()
     criterion = RMSELoss()
-    # criterion = nn.MSELoss()
+    #criterion = nn.MSELoss()
     # criterion = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     # lr_scheduler = CosineWarmupScheduler(optimizer=optimizer, warmup=750, max_iters=7500)
@@ -73,13 +73,14 @@ def train(dataloader, model, device, hdf, epochs, lr, weight_decay, eval_method,
             # user_summary = target.numpy()
             user_summary = user_summary.numpy()[0]
             outputs, _ = model(frame_features.to(device).squeeze(0),
-                               audio_features.to(device).squeeze(0)) 
-                              #  patarget.to(device).squeeze(0))
+                               audio_features.to(device).squeeze(0) 
+                               #patarget.to(device).squeeze(0))
+                            )
             #print(outputs.shape)
             #print(patarget.shape)
             # outputs, _ = model(frame_features.to(device).squeeze(0))
-            # video_loss = criterion(outputs.cpu().squeeze(0), target.squeeze(0))
-            video_loss = criterion(outputs.cpu().squeeze(0), patarget.squeeze(0))
+            video_loss = criterion(outputs.cpu().squeeze(0), target.squeeze(0))
+            #video_loss = criterion(outputs.cpu().squeeze(0), patarget.squeeze(0))
             # print(video_name, patarget.mean())
             # video_loss = criterion(outputs.cpu().squeeze(0), gt_summary.squeeze(0))
             loss += video_loss
